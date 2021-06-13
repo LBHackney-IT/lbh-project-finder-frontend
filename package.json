@@ -8,12 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "lbh-frontend": "^3.5.3",
     "next": "10.2.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.34.1"
   },
   "devDependencies": {
     "@types/react": "17.0.9",
+    "jest": "^27.0.4",
     "typescript": "4.3.2"
   }
 }
