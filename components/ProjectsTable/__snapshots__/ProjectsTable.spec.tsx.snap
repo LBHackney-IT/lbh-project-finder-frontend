@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectsTable component should render a list of projects 1`] = `
+<DocumentFragment>
+  <table
+    class="govuk-table lbh-table"
+  >
+    <thead
+      class="govuk-table__head"
+    >
+      <tr
+        class="govuk-table__row"
+      >
+        <th
+          class="govuk-table__header"
+          scope="col"
+        >
+          Project Name
+        </th>
+        <th
+          class="govuk-table__header"
+          scope="col"
+        >
+          Stage
+        </th>
+        <th
+          class="govuk-table__header"
+          scope="col"
+        >
+          Size
+        </th>
+        <th
+          class="govuk-table__header"
+          scope="col"
+        >
+          Project Type
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="govuk-table__body"
+    >
+      <tr
+        class="govuk-table__row"
+      >
+        <td
+          class="govuk-table__cell"
+        >
+          something
+        </td>
+        <td
+          class="govuk-table__cell"
+        >
+          discovery
+        </td>
+        <td
+          class="govuk-table__cell"
+        >
+          big
+        </td>
+        <td
+          class="govuk-table__cell"
+        >
+          tech
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
