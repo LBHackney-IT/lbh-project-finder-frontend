@@ -14,20 +14,22 @@ const ProjectDetails = ({ project }: Props): React.ReactElement => {
                 </div>
                 <div className="govuk-summary-list__row">
                     <dt className="govuk-summary-list__key">Stage</dt>
-                    <dd className="govuk-summary-list__value">Maintenance</dd>
+                    <dd className="govuk-summary-list__value">{project?.stage}</dd>
                 </div>
                 <div className="govuk-summary-list__row">
                     <dt className="govuk-summary-list__key">Size</dt>
-                    <dd className="govuk-summary-list__value">Large</dd>
+                    <dd className="govuk-summary-list__value">{project?.size}</dd>
                 </div>
                 <div className="govuk-summary-list__row">
                     <dt className="govuk-summary-list__key">Type</dt>
-                    <dd className="govuk-summary-list__value">Technology</dd>
+                    <dd className="govuk-summary-list__value">{project?.type}</dd>
                 </div>
-                <div className="govuk-summary-list__row">
-                    <dt className="govuk-summary-list__key">Project Dependencies</dt>
-                    <dd className="govuk-summary-list__value">Testing</dd>
-                </div>
+                {project?.project_dependencies &&
+                    <div className="govuk-summary-list__row">
+                        <dt className="govuk-summary-list__key">Project Dependencies</dt>
+                        <dd className="govuk-summary-list__value">{project?.project_dependencies}</dd>
+                    </div>
+                }
             </dl>
         </div>
     );

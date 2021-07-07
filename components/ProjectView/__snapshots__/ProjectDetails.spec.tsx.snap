@@ -31,7 +31,7 @@ exports[`ProjectDetails component should render a ProjectDetails component with 
         <dd
           class="govuk-summary-list__value"
         >
-          Maintenance
+          Discovery
         </dd>
       </div>
       <div
@@ -59,7 +59,7 @@ exports[`ProjectDetails component should render a ProjectDetails component with 
         <dd
           class="govuk-summary-list__value"
         >
-          Technology
+          Tech
         </dd>
       </div>
       <div
@@ -73,7 +73,7 @@ exports[`ProjectDetails component should render a ProjectDetails component with 
         <dd
           class="govuk-summary-list__value"
         >
-          Testing
+          none
         </dd>
       </div>
     </dl>

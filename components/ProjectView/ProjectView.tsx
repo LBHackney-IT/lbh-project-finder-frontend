@@ -1,12 +1,21 @@
 import Button from "../../components/Button/Button";
+import { Project } from "../../types";
+import { useProject } from "../../utils/projects";
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 interface Props {
-    projectId: number,
-    children: React.ReactChild,
+    projectId: number;
+    children?: React.ReactChild | ((arg0: Project) => React.ReactChild);
 }
 
 const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
-
+    const { data: project, error } = useProject(projectId);
+    if (error) {
+        return <ErrorMessage />;
+    }
+    if (!project) {
+        return <div></div>
+    }
     return (
         <>
             <div className="lbh-table-header">
@@ -16,7 +25,7 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
                 <Button label="Update Project"></Button>
             </div>
             <hr className="lbh-divider"></hr>
-            {children}
+            {typeof children === 'function' ? children(project) : children}
         </>
     );
 };
