@@ -46,22 +46,22 @@ exports[`ProjectsTable component should render a list of projects 1`] = `
         <td
           class="govuk-table__cell"
         >
-          something
+          Test Project
         </td>
         <td
           class="govuk-table__cell"
         >
-          discovery
+          Discovery
         </td>
         <td
           class="govuk-table__cell"
         >
-          big
+          Large
         </td>
         <td
           class="govuk-table__cell"
         >
-          tech
+          Tech
         </td>
       </tr>
     </tbody>

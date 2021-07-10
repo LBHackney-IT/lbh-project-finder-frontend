@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectTeam component should render a ProjectTeam component with the correct data 1`] = `
+<DocumentFragment>
+  <div>
+    <dl
+      class="govuk-summary-list lbh-summary-list"
+    >
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Julius Caesar
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          Delivery Manager
+        </dd>
+      </div>
+    </dl>
+  </div>
+</DocumentFragment>
+`;

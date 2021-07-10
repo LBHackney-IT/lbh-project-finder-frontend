@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectDetails component should render a ProjectDetails component with the correct data 1`] = `
+<DocumentFragment>
+  <div>
+    <dl
+      class="govuk-summary-list lbh-summary-list"
+    >
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Project Contact
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          Test Value
+        </dd>
+      </div>
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Stage
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          Discovery
+        </dd>
+      </div>
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Size
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          Large
+        </dd>
+      </div>
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Type
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          Tech
+        </dd>
+      </div>
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Project Dependencies
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          none
+        </dd>
+      </div>
+    </dl>
+  </div>
+</DocumentFragment>
+`;

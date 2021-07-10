@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectLinks component should render a ProjectLinks component with the correct data 1`] = `
+<DocumentFragment>
+  <div>
+    <dl
+      class="govuk-summary-list lbh-summary-list"
+    >
+      <div
+        class="govuk-summary-list__row"
+      >
+        <dt
+          class="govuk-summary-list__key"
+        >
+          Foo
+        </dt>
+        <dd
+          class="govuk-summary-list__value"
+        >
+          fake link
+        </dd>
+      </div>
+    </dl>
+  </div>
+</DocumentFragment>
+`;

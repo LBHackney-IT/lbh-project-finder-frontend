@@ -2,3 +2,16 @@ $lbh-global-styles: true;
 $lbh-asset-path: '~lbh-frontend/lbh/assets';
 
 @import 'node_modules/lbh-frontend/lbh/all';
+
+.lbh-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    button {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .lbh-divider {
+      border: solid 1px #d8d8d8;
+  }
