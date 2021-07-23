@@ -29,5 +29,5 @@ export interface GenericField {
         type?: string;
     };
     required?: boolean | string;
-
+    type?: string;
 }
