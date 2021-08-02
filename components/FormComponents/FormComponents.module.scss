@@ -1,0 +1,21 @@
+.close {
+    margin-top: 0;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+  
+    &:focus,
+    &:active {
+      outline: 3px solid lbh-colour('lbh-primary-focus');
+      background: lbh-colour('lbh-primary-focus');
+    }
+  
+    svg {
+      margin-top: 0;
+    }
+  }
