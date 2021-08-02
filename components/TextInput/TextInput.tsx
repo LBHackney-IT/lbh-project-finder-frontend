@@ -35,7 +35,6 @@ const TextInput = ({ name, label, hint, rules, register, error, required, width 
                     id={name}
                     name={name}
                     type="text"
-                    //ref={rules ? register?.(rules) : register}
                     aria-describedby={hint && `${name}-hint`}
                     {...register(`${name}` as const, rules)}
                 />

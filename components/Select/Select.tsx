@@ -30,7 +30,6 @@ const Select = ({ name, label, hint, rules, register, error, required, options, 
                 className={cx("govuk-select lbh-select", { "govuk-select--error": error })}
                 id={name}
                 name={name}
-                //ref={rules ? register?.(rules) : register}
                 aria-describedby={hint && `${name}-hint`}
                 {...register(`${name}`, rules)}
             >

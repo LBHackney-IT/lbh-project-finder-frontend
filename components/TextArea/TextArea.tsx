@@ -38,7 +38,6 @@ const TextArea = ({ name, label, hint, rules, register, error, required, rows, w
                 id={name}
                 name={name}
                 rows={rows}
-                //ref={rules ? register?.(rules) : register}
                 aria-describedby={hint && `${name}-hint`}
                 {...register(`${name}`, rules)}
             ></textarea>
