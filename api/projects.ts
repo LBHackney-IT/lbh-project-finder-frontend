@@ -8,3 +8,9 @@ export const getProject = async (projectId: number): Promise<Project> => {
         }), 3000)
     })
 }
+
+export const addProject = async (formData: any): Promise<any> => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(console.log(`Form data is ${JSON.stringify(formData)}`)), 1000)
+    })
+}
