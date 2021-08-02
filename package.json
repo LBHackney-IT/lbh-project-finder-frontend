@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx && echo 'Lint complete.'",
+    "format": "prettier '**/*.{js,jsx,ts,tsx,css,scss,md}' --write --list-different"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -26,9 +28,16 @@
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.23",
     "@types/react": "17.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "fishery": "^1.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.4",
+    "prettier": "2.3.2",
     "typescript": "4.3.5"
   }
 }
