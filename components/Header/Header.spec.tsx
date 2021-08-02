@@ -1,33 +1,31 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import Header from './Header';
+import Header from "./Header";
 
-let mockedUseRouter = { pathname: 'pathname' };
+const mockedUseRouter = { pathname: "pathname" };
 
-jest.mock('next/router', () => ({
-    asPath: 'path',
-    useRouter: () => mockedUseRouter,
+jest.mock("next/router", () => ({
+  asPath: "path",
+  useRouter: () => mockedUseRouter,
 }));
 
-jest.mock('./Logo', () => () => 'MockedLogo');
+jest.mock("./Logo", () => () => "MockedLogo");
 
-describe('Header component', () => {
-    const props = {
-        serviceName: 'test'
-    };
+describe("Header component", () => {
+  const props = {
+    serviceName: "test",
+  };
 
-    it('should render the service name', () => {
-        const { getByText } = render(<Header {...props} />);
-        expect(getByText('test')).toBeInTheDocument();
-    })
+  it("should render the service name", () => {
+    const { getByText } = render(<Header {...props} />);
+    expect(getByText("test")).toBeInTheDocument();
+  });
 
-    it('should render heading links', () => {
+  it("should render heading links", () => {
+    const { getByText } = render(<Header {...props} />);
 
-        const { getByText } = render(<Header {...props} />);
-
-        expect(getByText('All Projects')).toBeInTheDocument();
-        expect(getByText('My Projects')).toBeInTheDocument();
-        expect(getByText('Sign Out')).toBeInTheDocument();
-    })
-
+    expect(getByText("All Projects")).toBeInTheDocument();
+    expect(getByText("My Projects")).toBeInTheDocument();
+    expect(getByText("Sign Out")).toBeInTheDocument();
+  });
 });

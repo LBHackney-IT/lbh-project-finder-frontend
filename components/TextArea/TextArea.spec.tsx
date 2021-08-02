@@ -1,26 +1,39 @@
-import { render, screen } from '@testing-library/react';
-import TextArea from './TextArea';
+import { render, screen } from "@testing-library/react";
+import TextArea from "./TextArea";
 
-describe('TextArea component', () => {
-    const textAreaName = "textarea-1";
-    const textAreaLabel = "My Text Area";
-    const registerMock = jest.fn();
+describe("TextArea component", () => {
+  const textAreaName = "textarea-1";
+  const textAreaLabel = "My Text Area";
+  const registerMock = jest.fn();
 
-    it('renders correctly', () => {
-        render(<TextArea name={textAreaName} label={textAreaLabel} register={registerMock} />);
+  it("renders correctly", () => {
+    render(
+      <TextArea
+        name={textAreaName}
+        label={textAreaLabel}
+        register={registerMock}
+      />
+    );
 
-        expect(screen.getByLabelText(textAreaLabel));
-        expect(screen.getByRole('textbox'));
-    });
+    expect(screen.getByLabelText(textAreaLabel));
+    expect(screen.getByRole("textbox"));
+  });
 
-    it('renders errors', () => {
-        const testError = {
-            type: 'required',
-            message: 'test error'
-        };
+  it("renders errors", () => {
+    const testError = {
+      type: "required",
+      message: "test error",
+    };
 
-        render(<TextArea name={textAreaName} label={textAreaLabel} register={registerMock} error={testError} />);
+    render(
+      <TextArea
+        name={textAreaName}
+        label={textAreaLabel}
+        register={registerMock}
+        error={testError}
+      />
+    );
 
-        expect(screen.getByText('test error'));
-    });
+    expect(screen.getByText("test error"));
+  });
 });

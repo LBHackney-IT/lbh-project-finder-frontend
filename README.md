@@ -1,4 +1,5 @@
 # LBH Project Finder
+
 This project is my dissertation project for my apprenticeship course which allows council employees to find what projects are going on within the council and information about them such as team members and ways to find further information to help improve transparency within IT.
 
 ## Getting Started
@@ -27,4 +28,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
