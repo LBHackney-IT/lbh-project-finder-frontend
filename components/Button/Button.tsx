@@ -1,18 +1,24 @@
 import Router from 'next/router';
+import cx from 'classnames';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     label: string,
     onClick?: () => unknown,
-    route?: string
+    route?: string,
+    isSecondary?: boolean;
 }
 
-const Button = ({ label, onClick, route }: ButtonProps): React.ReactElement => {
+const Button = ({ label, onClick, route, isSecondary, ...otherProps }: ButtonProps): React.ReactElement => {
     const handleClick = () => {
         onClick?.();
         route && Router.push(`${route}`)
     }
     return (
-        <button className="govuk-button lbh-button" data-module="govuk-button" onClick={handleClick}>
+        <button className={cx(
+            'lbh-button govuk-button',
+            {
+                'lbh-button--secondary': isSecondary,
+            })} data-module="govuk-button" onClick={handleClick} {...otherProps} >
             {label}
         </button>
     );

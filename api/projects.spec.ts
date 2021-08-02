@@ -15,9 +15,21 @@ describe('project APIs', () => {
 
             //Update these tests once the actual API has been made
             //expect(mockedAxios.get).toHaveBeenCalled();
-            //expect(mockedAxios.get.mock.calls[0][0]).toEqual(`/residents/123`)
+            //expect(mockedAxios.get.mock.calls[0][0]).toEqual(`/projects/123`)
             //expect(data).toEqual(responseProject);
 
+        })
+    })
+
+    describe('addProject', () => {
+        it('should add a new project', async () => {
+            mockedAxios.post.mockResolvedValue({ data: {} });
+            await projectsAPI.addProject({ createdBy: "test@bar.com" });
+
+            //Update these tests once the actual API has been made
+            //expect(mockedAxios.post).toHaveBeenCalled();
+            //expect(mockedAxios.post.mock.calls[0][0]).toEqual(`/projects`)
+            // expect(mockedAxios.post.mock.calls[0][1]).toEqual({createdBy: 'test@bar.com',});
         })
     })
 })

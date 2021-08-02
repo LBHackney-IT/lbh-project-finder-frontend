@@ -7,7 +7,7 @@ export interface Props {
 const Layout = ({ children }: Props): React.ReactElement => {
     return (
         <>
-            <Header serviceName="Social Care" />
+            <Header serviceName="Project Finder" />
 
             <div className="govuk-width-container">
                 <main className="govuk-main-wrapper" id="content" role="main">
