@@ -1,4 +1,6 @@
 import { render } from "@testing-library/react";
+import { mockedUser } from "../../factories/users";
+import { UserContext } from "../UserContext/UserContext";
 
 import Header from "./Header";
 
@@ -17,15 +19,22 @@ describe("Header component", () => {
   };
 
   it("should render the service name", () => {
-    const { getByText } = render(<Header {...props} />);
+    const { getByText } = render(
+      <UserContext.Provider value={{ user: mockedUser }}>
+        <Header {...props} />
+      </UserContext.Provider>
+    );
     expect(getByText("test")).toBeInTheDocument();
   });
 
   it("should render heading links", () => {
-    const { getByText } = render(<Header {...props} />);
+    const { getByText } = render(
+      <UserContext.Provider value={{ user: mockedUser }}>
+        <Header {...props} />
+      </UserContext.Provider>
+    );
 
-    expect(getByText("All Projects")).toBeInTheDocument();
-    expect(getByText("My Projects")).toBeInTheDocument();
-    expect(getByText("Sign Out")).toBeInTheDocument();
+    expect(getByText("My projects")).toBeInTheDocument();
+    expect(getByText("Sign out")).toBeInTheDocument();
   });
 });

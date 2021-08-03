@@ -3,32 +3,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import Logo from "./Logo";
-
-const loggedInNavLinks = [
-  {
-    name: "All Projects",
-    path: "/",
-  },
-  {
-    name: "My Projects",
-    path: "/my-projects",
-  },
-  {
-    name: "Sign Out",
-    path: "/logout",
-  },
-];
+import { useAuth } from "../UserContext/UserContext";
 
 const Header = ({
   serviceName,
 }: {
   serviceName: string;
 }): React.ReactElement => {
-  const [navLinks, setNavLinks] = useState<typeof loggedInNavLinks>();
-  const { pathname } = useRouter();
-  useEffect(() => {
-    setNavLinks(loggedInNavLinks);
-  }, [pathname]);
+  const { user } = useAuth();
+
   return (
     <header className="lbh-header ">
       <div className="lbh-header__main">
@@ -41,17 +24,19 @@ const Header = ({
             </a>
           </div>
 
-          <nav className="lbh-header__links">
-            {navLinks && (
-              <>
-                {navLinks.map(({ name, path }) => (
-                  <Link href={path} key={path}>
-                    <a className="govuk-header__link">{name}</a>
-                  </Link>
-                ))}
-              </>
-            )}
-          </nav>
+          {user && (
+            <nav className="lbh-header__links">
+              <Link href="/">
+                <a className="govuk-header__link">All projects</a>
+              </Link>
+              <Link href="/my-projects">
+                <a className="govuk-header__link">My projects</a>
+              </Link>
+              <Link href="/logout">
+                <a className="govuk-header__link">Sign out</a>
+              </Link>
+            </nav>
+          )}
         </div>
       </div>
     </header>
