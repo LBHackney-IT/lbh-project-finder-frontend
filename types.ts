@@ -31,3 +31,11 @@ export interface GenericField {
   required?: boolean | string;
   type?: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  hasAdminPermissions: boolean;
+  hasUserPermissions: boolean;
+  isAuthorised: boolean;
+}
