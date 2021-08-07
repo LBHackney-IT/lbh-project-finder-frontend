@@ -39,3 +39,11 @@ export interface User {
   hasUserPermissions: boolean;
   isAuthorised: boolean;
 }
+
+export interface SystemUser {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+}
