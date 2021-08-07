@@ -28,3 +28,13 @@ $lbh-asset-path: "~lbh-frontend/lbh/assets";
     padding: 35px;
   }
 }
+
+.govuk-error-summary__title {
+  color: govuk-colour("red");
+}
+
+.govuk-error-summary {
+  border: 1px solid govuk-colour("red");
+  border-left-width: 5px;
+  background-color: #f8ecea;
+}
