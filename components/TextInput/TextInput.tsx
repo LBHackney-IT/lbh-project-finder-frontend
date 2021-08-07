@@ -18,6 +18,7 @@ const TextInput = ({
   error,
   required,
   width,
+  type = "text",
 }: TextInputProps): React.ReactElement => {
   return (
     <>
@@ -47,7 +48,7 @@ const TextInput = ({
           })}
           id={name}
           name={name}
-          type="text"
+          type={type}
           aria-describedby={hint && `${name}-hint`}
           {...register(`${name}` as const, rules)}
         />
