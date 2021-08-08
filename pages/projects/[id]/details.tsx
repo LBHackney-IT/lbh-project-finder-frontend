@@ -13,10 +13,6 @@ const ProjectPage = (): React.ReactElement => {
             <p className="lbh-body-m">{project.description}</p>
             <h2 className="lbh-heading-h2">Project details</h2>
             <ProjectDetails project={project}></ProjectDetails>
-            <h2 className="lbh-heading-h2">Related links and information</h2>
-            <ProjectLinks content={project.project_links!}></ProjectLinks>
-            <h2 className="lbh-heading-h2">Team</h2>
-            <ProjectTeam content={project.project_team!}></ProjectTeam>
           </>
         )}
       </ProjectView>
