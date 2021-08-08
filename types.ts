@@ -8,14 +8,6 @@ export interface Project {
   size: string;
   type: string;
   project_dependencies?: string;
-  project_links?: {
-    name: string;
-    link: string;
-  }[];
-  project_team?: {
-    name: string;
-    role: string;
-  }[];
 }
 
 export interface GenericField {
@@ -38,4 +30,19 @@ export interface User {
   hasAdminPermissions: boolean;
   hasUserPermissions: boolean;
   isAuthorised: boolean;
+}
+
+export interface ProjectLink {
+  id: number;
+  project_id: number;
+  type: string;
+  link: string;
+}
+
+export interface ProjectMember {
+  id: number
+  member_id: number;
+  project_id: number;
+  project_member: string;
+  role: string;
 }
