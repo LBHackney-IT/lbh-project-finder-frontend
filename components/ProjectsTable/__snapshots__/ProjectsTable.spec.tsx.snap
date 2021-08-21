@@ -3,7 +3,7 @@
 exports[`ProjectsTable component should render a list of projects 1`] = `
 <DocumentFragment>
   <table
-    class="govuk-table lbh-table"
+    class="govuk-table"
   >
     <thead
       class="govuk-table__head"
@@ -21,7 +21,7 @@ exports[`ProjectsTable component should render a list of projects 1`] = `
           class="govuk-table__header"
           scope="col"
         >
-          Stage
+          Phase
         </th>
         <th
           class="govuk-table__header"
@@ -29,19 +29,13 @@ exports[`ProjectsTable component should render a list of projects 1`] = `
         >
           Size
         </th>
-        <th
-          class="govuk-table__header"
-          scope="col"
-        >
-          Project Type
-        </th>
       </tr>
     </thead>
     <tbody
       class="govuk-table__body"
     >
       <tr
-        class="govuk-table__row"
+        class="govuk-table__row govuk-table__row--clickable"
       >
         <td
           class="govuk-table__cell"
@@ -57,11 +51,6 @@ exports[`ProjectsTable component should render a list of projects 1`] = `
           class="govuk-table__cell"
         >
           Large
-        </td>
-        <td
-          class="govuk-table__cell"
-        >
-          Tech
         </td>
       </tr>
     </tbody>
