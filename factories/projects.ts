@@ -2,20 +2,16 @@ import { Factory } from "fishery";
 import { Project } from "../types";
 
 export const projectFactory = Factory.define<Project>(({ sequence }) => ({
-  project_id: sequence,
-  project_name: "Test Project",
+  id: sequence,
+  projectName: "Test Project",
   description: "A project with many details",
-  stage: "Discovery",
+  projectContact: "Someone",
+  phase: "Discovery",
   size: "Large",
-  type: "Tech",
-  project_dependencies: "none",
-  project_links: [
-    {
-      name: "Foo",
-      link: "fake link",
-    },
-  ],
-  project_team: [{ name: "Julius Caesar", role: "Delivery Manager" }],
+  category: "Tech",
+  priority: "Extreme",
+  productUsers: "Noone",
+  dependencies: "none",
 }));
 
 export const mockedProject = projectFactory.build();
