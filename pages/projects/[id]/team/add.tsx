@@ -5,8 +5,8 @@ import Button from "../../../../components/Button/Button";
 import TextInput from "../../../../components/TextInput/TextInput";
 import Autocomplete from "../../../../components/Autocomplete/Autocomplete";
 import { addTeamMember } from "../../../../utils/projectTeam";
-
-
+//import { useUsers } from "../../../../utils/users";
+import Spinner from "../../../../components/Spinner/Spinner";
 
 interface FormData {
     member_id: number;
@@ -14,20 +14,23 @@ interface FormData {
 }
 
 const AddNewTeamMemberPage = (): React.ReactElement => {
+    const autocompleteData = [{ value: 1, text: "Test" }]
     const {
         register,
         handleSubmit,
         control,
         formState: { errors },
     } = useForm();
+    //   const { data: users, error: errorUsers } = useUsers();
+    //   const userList =
+    //     users &&
+    //     users?.map(({ id, firstName, lastName }) => ({
+    //       value: id,
+    //       text: firstName + " " + lastName,
+    //     }));
     const { push, query } = useRouter();
-    const project_id = Number(query.id)
+    const project_id = Number(query.id);
     const [error, setError] = useState(false);
-    const data = [
-        { value: 1, text: "somte" },
-        { value: 2, text: "kal el" },
-        { value: 3, text: "timmy" },
-    ];
 
     const onFormSubmit = async ({ ...data }: FormData) => {
         try {
@@ -39,10 +42,13 @@ const AddNewTeamMemberPage = (): React.ReactElement => {
         }
     };
 
+    // if (!users) {
+    //     return <Spinner />;
+    // }
+
     return (
         <div className="govuk-width-container">
-
-            <form role="form" onSubmit={handleSubmit(onFormSubmit)} >
+            <form role="form" onSubmit={handleSubmit(onFormSubmit)}>
                 <h1 className="govuk-fieldset__legend--l gov-weight-lighter">
                     New team member
                 </h1>
@@ -54,7 +60,7 @@ const AddNewTeamMemberPage = (): React.ReactElement => {
                             name={`projectMembers.name`}
                             label="Member Name"
                             control={control}
-                            choices={data}
+                            choices={autocompleteData}
                             onChange={onChange}
                             value={value}
                             width={12}
@@ -70,7 +76,6 @@ const AddNewTeamMemberPage = (): React.ReactElement => {
                     register={register}
                     rules={{ required: "A user role is required" }}
                     error={errors.role}
-
                 />
                 <Button label="Finish" type="submit" />
             </form>

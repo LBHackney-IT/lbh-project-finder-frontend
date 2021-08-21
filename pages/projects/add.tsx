@@ -5,25 +5,19 @@ import TextInput from "../../components/TextInput/TextInput";
 import TextArea from "../../components/TextArea/TextArea";
 import Select from "../../components/Select/Select";
 import { addProject } from "../../utils/projects";
-import ProjectTeamMemberInput from "../../components/FormComponents/ProjectTeamMemberInput/ProjectTeamMemberInput";
-
-const projectSizes = [
-  { text: "Small", value: "small" },
-  { text: "Medium", value: "medium" },
-  { text: "Large", value: "large" },
-];
-const projectStages = [
-  { text: "Discovery", value: "discovery" },
-  { text: "Build", value: "build" },
-  { text: "Support", value: "support" },
-];
+import projectPhases from "../../data/projectPhases";
+import projectSizes from "../../data/projectSizes";
+import projectPriority from "../../data/ProjectPriority";
 
 export type ProjectFormData = {
   projectName: string;
-  projectDescription: string;
+  description: string;
   projectContact: string;
-  projectStage: string;
-  projectSize: string;
+  phase: string;
+  size: string;
+  priority: string;
+  productUsers: string;
+  dependencies: string;
 };
 
 const NewProjectPage = (): React.ReactElement => {
@@ -53,37 +47,58 @@ const NewProjectPage = (): React.ReactElement => {
           width={10}
         />
         <TextArea
-          name="projectDescription"
+          name="description"
           label="Project Description"
           required={true}
           rules={{ required: "A project description is required" }}
           register={register}
-          error={errors.projectDescription}
+          error={errors.description}
           width={30}
         />
         <TextInput
           name="projectContact"
           label="Project Contact"
-          required={true}
-          rules={{ required: "A project contact is required" }}
           hint="This could be a delivery or project manager"
           register={register}
-          error={errors.projectContact}
           width={10}
         />
         <Select
-          name="projectStage"
-          label="Project Stage"
+          name="phase"
+          label="Project Phase"
           required={true}
-          options={projectStages}
+          options={projectPhases}
+          rules={{ required: "A project phase is required" }}
+          error={errors.phase}
           register={register}
         />
         <Select
-          name="projectSize"
+          name="size"
           label="Project Size"
           required={true}
           options={projectSizes}
+          rules={{ required: "A project size is required" }}
+          error={errors.size}
           register={register}
+        />
+        <Select
+          name="priority"
+          label="Priority"
+          options={projectPriority}
+          register={register}
+        />
+        <TextArea
+          name="productUsers"
+          label="Product Users"
+          hint="Who are the users of the application?"
+          register={register}
+          width={30}
+        />
+        <TextArea
+          name="dependencies"
+          label="dependencies"
+          hint="What dependencies or related projects are there?"
+          register={register}
+          width={30}
         />
 
         <Button label="Finish" type="submit"></Button>
