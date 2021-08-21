@@ -5,6 +5,7 @@ import { useProject } from "../../utils/projects";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Link from "next/link";
 import style from "./ProjectView.module.scss";
+import Spinner from "../Spinner/Spinner";
 
 interface Props {
   projectId: number;
@@ -39,17 +40,25 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
     return <ErrorMessage />;
   }
   if (!project) {
-    return <div></div>;
+    return <Spinner />;
   }
   return (
     <>
-      <div className={`govuk-grid-row govuk-!-margin-bottom-8 `}>
-        <div className="govuk-grid-column-two-thirds">
-          <h1 className="lbh-heading-h1">Test Project</h1>
+      <div>
+        <div
+          className={`govuk-grid-row govuk-!-margin-bottom-8 ${style.personHeader} `}
+        >
+          <div className="govuk-grid-column-two-thirds">
+            <h1 className="lbh-heading-h1">{project.projectName}</h1>
+          </div>
+          <div className={`govuk-grid-column-one-third ${style.actionsArea}`}>
+            <Button
+              label="Update Project"
+              route={`/projects/${projectId}/update`}
+            />
+          </div>
         </div>
-        <div className={`govuk-grid-column-one-third ${style.actionsArea}`}>
-          <Button label="Update Project"></Button>
-        </div>
+        <hr className="lbh-divider" style={{ marginBottom: 50 }} />
       </div>
 
       <div className={`govuk-grid-row ${style.outer}`}>
@@ -67,14 +76,6 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
           {typeof children === "function" ? children(project) : children}
         </div>
       </div>
-      {/* <div className="lbh-table-header">
-        <h1 className="govuk-fieldset__legend--l gov-weight-lighter">
-          Test Project
-        </h1>
-        <Button label="Update Project"></Button>
-      </div>
-      <hr className="lbh-divider"></hr>
-      {typeof children === "function" ? children(project) : children} */}
     </>
   );
 };

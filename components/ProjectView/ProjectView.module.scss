@@ -31,6 +31,10 @@
   }
 }
 
+.navLinkActive {
+  font-weight: $lbh-font-weight-bold;
+}
+
 .outer {
   @include govuk-media-query($from: tablet) {
     display: flex;
