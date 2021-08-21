@@ -64,3 +64,14 @@ $govuk-page-width: 1100px;
     margin-top: 0;
   }
 }
+
+.govuk-table__row--clickable:hover {
+  background: govuk-colour("light-grey");
+  cursor: pointer;
+}
+
+.govuk-grid-row {
+  button {
+    margin-top: 0;
+  }
+}
