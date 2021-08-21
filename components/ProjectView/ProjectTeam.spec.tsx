@@ -4,10 +4,10 @@ import { mockedProject } from "../../factories/projects";
 import ProjectTeam from "./ProjectTeam";
 
 describe("ProjectTeam component", () => {
-  const props = mockedProject.project_team;
+  const props = mockedProject;
 
   it("should render a ProjectTeam component with the correct data", () => {
-    const { asFragment } = render(<ProjectTeam content={props!} />);
+    const { asFragment } = render(<ProjectTeam project={props} />);
 
     expect(asFragment()).toMatchSnapshot();
   });
