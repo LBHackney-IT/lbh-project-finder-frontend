@@ -1,13 +1,16 @@
 import { RegisterOptions } from "react-hook-form";
 
 export interface Project {
-  project_id: number;
-  project_name: string;
+  id: number;
+  projectName: string;
   description: string;
-  stage: string;
+  projectContact: string;
+  phase: string;
   size: string;
-  type: string;
-  project_dependencies?: string;
+  category: string;
+  priority: string;
+  productUsers: string;
+  dependencies?: string;
 }
 
 export interface GenericField {
@@ -40,7 +43,7 @@ export interface ProjectLink {
 }
 
 export interface ProjectMember {
-  id: number
+  id: number;
   member_id: number;
   project_id: number;
   project_member: string;
