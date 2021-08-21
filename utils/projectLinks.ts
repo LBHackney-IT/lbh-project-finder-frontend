@@ -3,27 +3,33 @@ import useSWR, { SWRResponse } from "swr";
 import { ProjectLink } from "../types";
 
 export const useProjectLinks = (
-    projectId: number
-): SWRResponse<ProjectLink[], AxiosError> => useSWR(`/api/projects/${projectId}/links`);
+  projectId: number
+): SWRResponse<ProjectLink[], AxiosError> =>
+  useSWR(`/api/projects/${projectId}/links`);
 
 interface addNewProjectLinkData {
-    project_id: number;
-    type: string;
-    link: string;
+  project_id: number;
+  type: string;
+  link: string;
 }
 
 export const addProjectLink = async (
-    formData: addNewProjectLinkData
+  formData: addNewProjectLinkData
 ): Promise<Record<string, string | number>> => {
-    const { data } = await axios.post(`/api/projects/${formData.project_id}/links`, formData);
-    return data;
+  const { data } = await axios.post(
+    `/api/projects/${formData.project_id}/links`,
+    formData
+  );
+  return data;
 };
 
 export const removeProjectLink = async (
-    project_id: number,
-    link_id: number
+  project_id: number,
+  link_id: number
 ): Promise<Record<string, string | number>> => {
-    const { data } = await axios.delete(`/api/projects/${project_id}/links/remove/${link_id}`);
+  const { data } = await axios.delete(
+    `/api/projects/${project_id}/links/remove/${link_id}`
+  );
 
-    return data;
+  return data;
 };
