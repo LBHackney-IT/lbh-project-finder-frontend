@@ -9,6 +9,7 @@ declare global {
       HACKNEY_JWT_SECRET: string;
       AUTHORISED_USER_GROUP: string;
       AUTHORISED_ADMIN_GROUP: string;
+      ENDPOINT_API: string;
     }
   }
 }

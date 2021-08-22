@@ -12,3 +12,11 @@ export const addProject = async (
   const { data } = await axios.post(`/api/projects`, formData);
   return data;
 };
+
+export const updateProject = async (
+  projectId: number,
+  formData: Record<string, string | number>
+): Promise<Record<string, string>> => {
+  const { data } = await axios.patch(`/api/projects/${projectId}`, formData);
+  return data;
+};

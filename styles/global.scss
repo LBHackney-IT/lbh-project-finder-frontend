@@ -1,7 +1,12 @@
 $lbh-global-styles: true;
 $lbh-asset-path: "~lbh-frontend/lbh/assets";
+$govuk-page-width: 1100px;
 
 @import "node_modules/lbh-frontend/lbh/all";
+
+#__next {
+  margin-top: 0;
+}
 
 .lbh-table-header {
   display: flex;
@@ -26,5 +31,47 @@ $lbh-asset-path: "~lbh-frontend/lbh/assets";
 
   @include govuk-media-query($from: tablet) {
     padding: 35px;
+  }
+}
+
+// dialog styles
+:root {
+  --reach-dialog: 1;
+}
+[data-reach-dialog-overlay] {
+  background: hsla(0, 0%, 0%, 0.33);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+[data-reach-dialog-content] {
+  width: 50vw;
+  margin: 10vh auto;
+  background: white;
+  padding: 2rem;
+  outline: none;
+}
+
+.lbh-header {
+  z-index: inherit;
+}
+
+.lbh-dialog {
+  &__close {
+    margin-top: 0;
+  }
+}
+
+.govuk-table__row--clickable:hover {
+  background: govuk-colour("light-grey");
+  cursor: pointer;
+}
+
+.govuk-grid-row {
+  button {
+    margin-top: 0;
   }
 }

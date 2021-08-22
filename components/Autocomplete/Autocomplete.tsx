@@ -12,7 +12,7 @@ interface Props {
   required?: boolean;
   rules?: RegisterOptions;
   onChange: any;
-  value: string;
+  value: string | number;
   choices: {
     value: number | string;
     text: string;
