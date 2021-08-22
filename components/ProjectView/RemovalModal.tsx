@@ -15,7 +15,10 @@ const RemovalModal = ({
   onFormSubmit,
   removalItem,
 }: Props): React.ReactElement => {
-  const title = removalItem && 'member_id' in removalItem ? "You are about to remove this team member" : "You are about to remove this link"
+  const title =
+    removalItem && "member_id" in removalItem
+      ? "You are about to remove this team member"
+      : "You are about to remove this link";
   return (
     <Modal isOpen={isOpen} onDismiss={onDismiss} title={title}>
       <p className="lbh-body">Are you sure you want to do this?</p>
