@@ -12,7 +12,7 @@ const ProjectSearch = (): React.ReactElement => {
   const [projects, setProjects] = useState<ProjectSearchResults | null>();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<string>();
-  var formParams: SearchFormData;
+  let formParams: SearchFormData;
 
   const onFormSubmit = async (params: SearchFormData) => {
     setLoading(true);
