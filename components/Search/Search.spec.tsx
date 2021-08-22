@@ -27,4 +27,16 @@ describe("Search component", () => {
         const result = await screen.getByText("Load more");
         expect(result).toBeInTheDocument();
     })
+
+    it("should render a error message if an error is returned", async () => {
+        jest.spyOn(projectsAPI, "useProjects").mockImplementation(() => (Promise.reject(new Error())))
+        render(<ProjectSearch />);
+
+        await act(async () => {
+            fireEvent.click(screen.getByText('Search'));
+        })
+
+        const result = await screen.getByText("Something went wrong");
+        expect(result).toBeInTheDocument();
+    })
 })

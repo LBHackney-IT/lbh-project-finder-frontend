@@ -6,18 +6,17 @@ import ProjectsTable from "../ProjectsTable/ProjectsTable";
 import SearchByProjectDetails from "./SearchByProjectDetails";
 import style from "./Search.module.scss";
 import Spinner from "../Spinner/Spinner";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const ProjectSearch = (): React.ReactElement => {
   const [projects, setProjects] = useState<ProjectSearchResults | null>();
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState<string>();
   var formParams: SearchFormData;
 
   const onFormSubmit = async (params: SearchFormData) => {
     setLoading(true);
-    console.log("Params before: " + formParams);
     formParams = params;
-    console.log("Params after: " + formParams);
     !formParams?.cursor && setProjects(null);
     try {
       const data = await useProjects(formParams);
@@ -27,11 +26,9 @@ const ProjectSearch = (): React.ReactElement => {
           ? { ...data, projects: [...projects!.projects, ...data.projects] }
           : data
       );
-      console.log(projects);
-      console.log(data);
     } catch (e) {
       setLoading(false);
-      console.log(e);
+      setErrors("Something went wrong")
     }
   };
   return (
@@ -78,6 +75,7 @@ const ProjectSearch = (): React.ReactElement => {
           />
         )}
         {loading && <Spinner />}
+        {errors && <ErrorMessage label={errors} />}
       </div>
     </>
   );
