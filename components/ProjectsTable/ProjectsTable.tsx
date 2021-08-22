@@ -42,4 +42,3 @@ const ProjectsTable = ({
 );
 
 export default ProjectsTable;
-
