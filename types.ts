@@ -49,3 +49,15 @@ export interface ProjectMember {
   project_member: string;
   role: string;
 }
+
+export interface ProjectSearchResults {
+  projects: Project[] | [];
+  nextCursor: string;
+}
+
+export interface SearchFormData {
+  project_name?: string;
+  size?: string;
+  phase?: string;
+  cursor?: string;
+}
