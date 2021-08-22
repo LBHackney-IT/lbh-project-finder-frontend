@@ -2,25 +2,15 @@
 
 exports[`ProjectTeam component should render a ProjectTeam component with the correct data 1`] = `
 <DocumentFragment>
-  <div>
-    <dl
-      class="govuk-summary-list lbh-summary-list"
+  <span
+    class="govuk-error-message"
+  >
+    <span
+      class="govuk-visually-hidden"
     >
-      <div
-        class="govuk-summary-list__row"
-      >
-        <dt
-          class="govuk-summary-list__key"
-        >
-          Julius Caesar
-        </dt>
-        <dd
-          class="govuk-summary-list__value"
-        >
-          Delivery Manager
-        </dd>
-      </div>
-    </dl>
-  </div>
+      Error:
+    </span>
+     There was a problem with getting the project's team members.
+  </span>
 </DocumentFragment>
 `;

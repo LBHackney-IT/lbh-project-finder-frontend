@@ -10,6 +10,7 @@ declare global {
       ENDPOINT_API: string;
       AUTHORISED_USER_GROUP: string;
       AUTHORISED_ADMIN_GROUP: string;
+      ENDPOINT_API: string;
     }
   }
 }

@@ -1,0 +1,90 @@
+@import "lbh-frontend/lbh/base";
+
+.personHeader {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.actionsArea {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.navLink,
+.navLinkActive {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  @include govuk-media-query($from: tablet) {
+    font-size: 1.2rem;
+  }
+}
+
+.navLinkActive {
+  font-weight: $lbh-font-weight-bold;
+}
+
+.outer {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+  }
+}
+
+.sticky {
+  @include govuk-media-query($from: tablet) {
+    position: sticky;
+    top: 25px;
+  }
+}
+
+.heading {
+  border-bottom: 3px solid lbh-colour("lbh-text");
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+
+  a,
+  button {
+    display: block;
+    margin-top: 1rem;
+    @include lbh-body-m;
+  }
+
+  @include govuk-media-query(400px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    a,
+    button {
+      margin-top: 0;
+    }
+  }
+}
+
+.modalActions {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    * {
+      margin-top: 0;
+    }
+    *:last-child {
+      margin-left: 1.5rem;
+    }
+  }
+}

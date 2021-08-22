@@ -12,14 +12,6 @@ export const getProject = async (projectId: number): Promise<Project> => {
           size: "Large",
           stage: "Discovery",
           type: "Tech",
-          project_links: [
-            { name: "Google Drive", link: "fake link" },
-            { name: "Github", link: "second fake link" },
-          ],
-          project_team: [
-            { name: "someone", role: "Dev" },
-            { name: "again someone", role: "Manager" },
-          ],
         }),
       3000
     );

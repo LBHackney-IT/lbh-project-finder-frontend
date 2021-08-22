@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 
 import { StatusCodes } from "http-status-codes";
-import { getProject } from "../../../../api/projects";
+import { getProject, updateProject } from "../../../../api/projects";
 
 const endpoint: NextApiHandler = async (
   req: NextApiRequest,
@@ -25,6 +25,20 @@ const endpoint: NextApiHandler = async (
           : res
               .status(StatusCodes.INTERNAL_SERVER_ERROR)
               .json({ message: "Unable to get the Project" });
+      }
+      break;
+
+    case "PATCH":
+      try {
+        console.log("data is: " + req.body);
+        const data = await updateProject(req.body);
+        res.status(StatusCodes.OK).json(data);
+      } catch (error) {
+        console.error("Project patch error:", error?.response?.data);
+        console.error("Project patch request:", req);
+        res
+          .status(StatusCodes.INTERNAL_SERVER_ERROR)
+          .json({ message: "Unable to update project" });
       }
       break;
 
