@@ -1,5 +1,5 @@
 import Button from "../Button/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useProjects } from "../../utils/projects";
 import { ProjectSearchResults, SearchFormData } from "../../types";
 import ProjectsTable from "../ProjectsTable/ProjectsTable";
