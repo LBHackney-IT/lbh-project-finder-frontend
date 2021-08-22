@@ -1,6 +1,13 @@
 import axios, { AxiosError } from "axios";
 import useSWR, { SWRResponse } from "swr";
-import { Project } from "../types";
+import { Project, ProjectSearchResults, SearchFormData } from "../types";
+
+export const useProjects = async (
+  params: SearchFormData
+): Promise<ProjectSearchResults> => {
+  const { data } = await axios.get(`/api/projects`, { params });
+  return data;
+};
 
 export const useProject = (
   projectId: number
