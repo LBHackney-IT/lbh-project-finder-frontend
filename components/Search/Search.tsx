@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 import { useState } from "react";
-import { useProjects } from "../../utils/projects";
+import { useProjects as UseProjects } from "../../utils/projects";
 import { ProjectSearchResults, SearchFormData } from "../../types";
 import ProjectsTable from "../ProjectsTable/ProjectsTable";
 import SearchByProjectDetails from "./SearchByProjectDetails";
@@ -19,7 +19,7 @@ const ProjectSearch = (): React.ReactElement => {
     formParams = params;
     !formParams?.cursor && setProjects(null);
     try {
-      const data = await useProjects(formParams);
+      const data = await UseProjects(formParams);
       setLoading(false);
       setProjects(
         formParams?.cursor
