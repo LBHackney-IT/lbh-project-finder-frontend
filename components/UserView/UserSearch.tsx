@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUserByEmail } from "../../utils/users";
+import { useUserByEmail as UseUserByEmail } from "../../utils/users";
 import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const UserSearch = (): React.ReactElement => {
   const [foundUser, setFoundUser] = useState<SystemUser>();
 
   const onFormSubmit = async (formData: FormValue) => {
-    const { data, error } = await useUserByEmail(formData.email);
+    const { data, error } = UseUserByEmail(formData.email);
 
     if (error) setError(error);
 
@@ -65,7 +65,7 @@ const UserSearch = (): React.ReactElement => {
           </p>
           <p className="govuk-body govuk-!-margin-top-5">
             Please be sure the email address is correct before you use it to{" "}
-            <Link href={"/workers/add"}>
+            <Link href={"/users/add"}>
               <a className="govuk-link">create a new user in the system</a>
             </Link>
           </p>
