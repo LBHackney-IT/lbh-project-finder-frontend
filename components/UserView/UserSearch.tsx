@@ -17,15 +17,11 @@ const UserSearch = (): React.ReactElement => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [error, setError] = useState<AxiosError>();
-  const [foundUser, setFoundUser] = useState<SystemUser>();
+  const [params, setParams] = useState<FormValue>()
+  const { data, error } = UseUserByEmail(params?.email);
 
   const onFormSubmit = async (formData: FormValue) => {
-    const { data, error } = UseUserByEmail(formData.email);
-
-    if (error) setError(error);
-
-    return setFoundUser(data);
+    setParams(formData);
   };
   return (
     <div>
@@ -71,7 +67,7 @@ const UserSearch = (): React.ReactElement => {
           </p>
         </>
       )}
-      {foundUser && (
+      {data && (
         <>
           <h3>User&apos;s email address is already in the system</h3>
           <p className="govuk-body govuk-!-margin-top-5">
