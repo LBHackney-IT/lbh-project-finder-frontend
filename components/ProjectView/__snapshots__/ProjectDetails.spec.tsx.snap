@@ -54,7 +54,7 @@ exports[`ProjectDetails component should render a ProjectDetails component with 
         <dt
           class="govuk-summary-list__key"
         >
-          Type
+          Category
         </dt>
         <dd
           class="govuk-summary-list__value"
