@@ -19,15 +19,16 @@ export const getProject = async (projectId: number): Promise<Project> => {
   return data;
 };
 
-export const addProject = async (formData: any): Promise<any> => {
-  return new Promise((resolve) => {
-    setTimeout(
-      () => resolve(console.log(`Form data is ${JSON.stringify(formData)}`)),
-      1000
-    );
-  });
+export const addProject = async (formData: Record<string, string>): Promise<any> => {
+  const { data } = await axios.post(`${ENDPOINT_API}/projects`, formData)
+
+  return data;
 };
 
-export const updateProject = async (formData: any): Promise<void> => {
+export const updateProject = async (formData: Record<string, string | number>): Promise<void> => {
   await axios.patch(`${ENDPOINT_API}/projects`, formData);
 };
+
+export const deleteProject = async (project_id: number): Promise<void> => {
+  await axios.delete(`${ENDPOINT_API}/projects/${project_id}`);
+}
