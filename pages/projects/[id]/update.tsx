@@ -119,7 +119,7 @@ const UpdateProjectPage = (): React.ReactElement => {
       />
       <TextArea
         name="dependencies"
-        label="dependencies"
+        label="Dependencies"
         hint="What dependencies or related projects are there?"
         register={register}
         width={30}

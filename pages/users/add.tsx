@@ -37,8 +37,8 @@ const CreateNewUser = (): React.ReactElement => {
     <div className="govuk-width-container">
       {error && (
         <ErrorSummary
-          title="Something went wrong"
-          body="Looks like it failed boss, gonna have to rety that one again"
+          title="Unfortunately there was a problem with your submission."
+          body="Please try again"
         />
       )}
       <form role="form" onSubmit={handleSubmit(onFormSubmit)}>
