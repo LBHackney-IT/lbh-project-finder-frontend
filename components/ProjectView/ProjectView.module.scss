@@ -1,8 +1,7 @@
 @import "lbh-frontend/lbh/base";
 
-.personHeader {
+.projectHeader {
   @include govuk-media-query($from: tablet) {
-    display: flex;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,7 +11,7 @@
 .actionsArea {
   @include govuk-media-query($from: tablet) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: center;
   }
@@ -87,4 +86,8 @@
       margin-left: 1.5rem;
     }
   }
+}
+
+button.discardLink {
+  color: lbh-colour('lbh-error');
 }
