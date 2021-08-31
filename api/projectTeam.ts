@@ -1,57 +1,36 @@
 import axios from "axios";
 import { ProjectMember } from "../types";
 
+const ENDPOINT_API = process.env.ENDPOINT_API;
+
 export const getTeamByProject = async (
   projectId: number
 ): Promise<ProjectMember[] | []> => {
-  // const { data } = await axios.get(`/projects/${projectId}/team`, {
-  //     headers,
-  // })
-
-  // return data
-
-  return new Promise((resolve) => {
-    setTimeout(
-      () =>
-        resolve([
-          {
-            id: 1,
-            member_id: 2,
-            project_id: 1,
-            project_member: "Joe Rogan",
-            role: "Developer",
-          },
-        ]),
-      3000
-    );
-  });
+  const { data } = await axios.get(`${ENDPOINT_API}/projects/${projectId}/team`, {
+    // headers,
+  })
+  console.log(data)
+  return data
 };
 
 export const addTeamMember = async (
   project_id: number,
   formData: Record<string, string | number>
 ): Promise<any> => {
-  // const { data } = await axios.post(`/projects/${project_id}/team`, formData, {
-  //     headers,
-  // })
+  const { data } = await axios.post(`${ENDPOINT_API}/members`, formData, {
+    // headers,
+  })
 
-  // return data
-
-  return new Promise((resolve) => {
-    setTimeout(
-      () => resolve(console.log(`Form data is ${JSON.stringify(formData)}`)),
-      1000
-    );
-  });
+  return data
 };
 
 export const removeTeamMember = async (
   team_member_id: number
 ): Promise<void> => {
-  // await axios.delete(
-  //   `${ENDPOINT_API}/team/${team_member_id}`,
-  //   {
-  //     headers,
-  //   }
-  // );
+  await axios.delete(
+    `${ENDPOINT_API}/members/${team_member_id}`,
+    {
+      //headers,
+    }
+  );
 };
