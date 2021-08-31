@@ -45,16 +45,16 @@ export interface SystemUser {
 export interface ProjectLink {
   id: number;
   project_id: number;
-  type: string;
+  linkTitle: string;
   link: string;
 }
 
 export interface ProjectMember {
   id: number;
-  member_id: number;
-  project_id: number;
-  project_member: string;
-  role: string;
+  projectId: number;
+  projectName: string;
+  memberName: string;
+  projectRole: string;
 }
 
 export interface ProjectSearchResults {
