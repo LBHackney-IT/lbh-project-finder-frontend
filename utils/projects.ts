@@ -27,3 +27,9 @@ export const updateProject = async (
   const { data } = await axios.patch(`/api/projects/${projectId}`, formData);
   return data;
 };
+
+export const deleteProject = async (
+  projectId: number
+): Promise<void> => {
+  await axios.delete(`/api/projects/${projectId}`);
+}
