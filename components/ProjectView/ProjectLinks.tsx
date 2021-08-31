@@ -19,6 +19,23 @@ const ProjectLinks = ({ project }: ProjectLinksProps): React.ReactElement => {
   const { data: links, error } = useProjectLinks(project.id);
 
   if (error) {
+    if (error?.response?.status === 404) {
+      return (
+        <section className="govuk-!-margin-bottom-8">
+          <div className={style.heading}>
+            <h2>Project Links</h2>
+            <Link href={`/projects/${project.id}/links/add`}>
+              <a className="lbh-link lbh-link--no-visited-state">
+                Add a new link
+              </a>
+            </Link>
+          </div>
+          <p className="govuk-body govuk-!-margin-top-5">
+            No links have been added to this project
+          </p>
+        </section>
+      );
+    }
     return (
       <ErrorMessage label="There was a problem with getting the project's links." />
     );
@@ -31,7 +48,7 @@ const ProjectLinks = ({ project }: ProjectLinksProps): React.ReactElement => {
   return (
     <>
       <RemovalModal
-        removalItem={linkToRemove!}
+        title={"You are about to delete this link"}
         isOpen={isModalOpen}
         onDismiss={() => setIsModalOpen(false)}
         onFormSubmit={async () => {
@@ -52,12 +69,12 @@ const ProjectLinks = ({ project }: ProjectLinksProps): React.ReactElement => {
           </Link>
         </div>
 
-        {links && links.length > 0 ? (
+        {links && links.length > 0 && (
           <table className="govuk-table lbh-table">
             <thead className="govuk-table__head">
               <tr className="govuk-table__row">
                 <th scope="col" className="govuk-table__header">
-                  Type
+                  Title
                 </th>
                 <th scope="col" className="govuk-table__header">
                   Link
@@ -69,9 +86,9 @@ const ProjectLinks = ({ project }: ProjectLinksProps): React.ReactElement => {
             </thead>
             <tbody className="govuk-table__body">
               {links.map((link, contentIndex) => (
-                <tr className="govuk-table__row lbh-list" key={link.type}>
+                <tr className="govuk-table__row lbh-list" key={contentIndex}>
                   <th scope="row" className="govuk-table__header">
-                    {link.type}
+                    {link.linkTitle}
                   </th>
                   <td className="govuk-table__cell">{link.link}</td>
                   <td className="govuk-table__cell">
@@ -89,8 +106,6 @@ const ProjectLinks = ({ project }: ProjectLinksProps): React.ReactElement => {
               ))}
             </tbody>
           </table>
-        ) : (
-          <p className="lbh-body">No team has been assigned for this project</p>
         )}
       </section>
     </>

@@ -23,7 +23,7 @@ const AddNewLinkPage = (): React.ReactElement => {
   const onFormSubmit = async ({ ...data }: FormData) => {
     try {
       await addProjectLink({ project_id, ...data });
-      //push(`/projects/${project_id}/projects/confirmation`);
+      push(`/projects/${project_id}/links`);
     } catch (e) {
       console.log(e);
       setError(true);

@@ -28,11 +28,11 @@ const endpoint: NextApiHandler = async (
         console.error("Project link get error:", error?.response?.data);
         error?.response?.status === StatusCodes.NOT_FOUND
           ? res
-              .status(StatusCodes.NOT_FOUND)
-              .json({ message: "Project links Not Found" })
+            .status(StatusCodes.NOT_FOUND)
+            .json({ message: "Project links Not Found" })
           : res
-              .status(StatusCodes.INTERNAL_SERVER_ERROR)
-              .json({ message: "Unable to get the project links" });
+            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+            .json({ message: "Unable to get the project links" });
       }
       break;
     case "POST":
@@ -45,22 +45,6 @@ const endpoint: NextApiHandler = async (
         res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
           .json({ message: "Unable to add the project link" });
-      }
-      break;
-
-    case "DELETE":
-      try {
-        await removeProjectLink(parseInt(req.query.link_id as string));
-        res.status(StatusCodes.OK).end();
-      } catch (error) {
-        console.error("Project link delete error:", error?.response?.data);
-        error?.response?.status === StatusCodes.NOT_FOUND
-          ? res.status(StatusCodes.NOT_FOUND).json({
-              message: `Project link not found with ID: ${req.query.link_id}.`,
-            })
-          : res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-              message: `Unable to remove the project link with ID: ${req.query.link_id}.`,
-            });
       }
       break;
 
