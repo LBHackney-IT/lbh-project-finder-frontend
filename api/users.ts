@@ -4,6 +4,12 @@ import { SystemUser } from "../types";
 
 const ENDPOINT_API = process.env.ENDPOINT_API;
 
+export const getUsers = async (): Promise<SystemUser[] | []> => {
+  const { data } = await axios.get(`${ENDPOINT_API}/users`);
+
+  return data;
+};
+
 export const getUserByEmail = async (email: string): Promise<SystemUser> => {
   const { data } = await axios.get(`${ENDPOINT_API}/users/email`, {
     params: { email_address: email },
