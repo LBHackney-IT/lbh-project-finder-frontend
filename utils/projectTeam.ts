@@ -3,14 +3,14 @@ import useSWR, { SWRResponse } from "swr";
 import { ProjectMember } from "../types";
 
 export const useTeamMembers = (
-  projectId: number
+  project_id: number
 ): SWRResponse<ProjectMember[], AxiosError> =>
-  useSWR(`/api/projects/${projectId}/team`);
+  useSWR(`/api/projects/${project_id}/team`);
 
 interface addNewTeamMemberData {
   project_id: number;
-  member_id: number;
-  role: string;
+  user_id: number;
+  project_role: string;
 }
 
 export const addTeamMember = async (
@@ -27,8 +27,9 @@ export const removeTeamMember = async (
   project_id: number,
   team_member_id: number
 ): Promise<Record<string, string | number>> => {
+  console.log(team_member_id)
   const { data } = await axios.delete(
-    `/api/projects/${project_id}/team/remove/${team_member_id}`
+    `/api/projects/${project_id}/team/${team_member_id}`
   );
 
   return data;

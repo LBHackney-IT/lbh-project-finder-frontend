@@ -2,12 +2,19 @@ import type { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 
 import { StatusCodes } from "http-status-codes";
 import { addProject, getProjects } from "../../../api/projects";
-import { SearchFormData } from "../../../types";
+import { isAuthorised } from "../../../utils/auth";
 
 const endpoint: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
+  const user = isAuthorised(req);
+  if (!user) {
+    return res.status(StatusCodes.UNAUTHORIZED).end();
+  }
+  if (!user.isAuthorised) {
+    return res.status(StatusCodes.FORBIDDEN).end();
+  }
   switch (req.method) {
     case "GET":
       try {

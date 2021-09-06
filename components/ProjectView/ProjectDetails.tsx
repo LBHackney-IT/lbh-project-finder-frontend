@@ -22,7 +22,7 @@ const ProjectDetails = ({ project }: Props): React.ReactElement => {
           <dd className="govuk-summary-list__value">{project?.size}</dd>
         </div>
         <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key">Type</dt>
+          <dt className="govuk-summary-list__key">Category</dt>
           <dd className="govuk-summary-list__value">
             {project?.category ? project.category : "N/A"}
           </dd>

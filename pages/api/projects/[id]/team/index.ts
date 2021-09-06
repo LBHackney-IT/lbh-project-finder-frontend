@@ -22,19 +22,21 @@ const endpoint: NextApiHandler = async (
   switch (req.method) {
     case "GET":
       try {
+        console.log(parseInt(req.query.id as string))
         const data = await getTeamByProject(parseInt(req.query.id as string));
         res.status(StatusCodes.OK).json(data);
       } catch (error) {
         console.error("Project team get error:", error?.response?.data);
         error?.response?.status === StatusCodes.NOT_FOUND
           ? res
-              .status(StatusCodes.NOT_FOUND)
-              .json({ message: "Project team Not Found" })
+            .status(StatusCodes.NOT_FOUND)
+            .json({ message: "Project team Not Found" })
           : res
-              .status(StatusCodes.INTERNAL_SERVER_ERROR)
-              .json({ message: "Unable to get the project team" });
+            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+            .json({ message: "Unable to get the project team" });
       }
       break;
+
     case "POST":
       try {
         await addTeamMember(parseInt(req.query.id as string), req.body);
@@ -45,21 +47,6 @@ const endpoint: NextApiHandler = async (
         res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
           .json({ message: "Unable to add the team member" });
-      }
-      break;
-    case "DELETE":
-      try {
-        await removeTeamMember(parseInt(req.query.team_member_id as string));
-        res.status(StatusCodes.OK).end();
-      } catch (error) {
-        console.error("Team member delete error:", error?.response?.data);
-        error?.response?.status === StatusCodes.NOT_FOUND
-          ? res.status(StatusCodes.NOT_FOUND).json({
-              message: `Team member not found with ID: ${req.query.team_member_id}.`,
-            })
-          : res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-              message: `Unable to remove the team member with ID: ${req.query.team_member_id}.`,
-            });
       }
       break;
 

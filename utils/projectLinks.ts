@@ -28,7 +28,7 @@ export const removeProjectLink = async (
   link_id: number
 ): Promise<Record<string, string | number>> => {
   const { data } = await axios.delete(
-    `/api/projects/${project_id}/links/remove/${link_id}`
+    `/api/projects/${project_id}/links/${link_id}`
   );
 
   return data;

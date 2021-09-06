@@ -2,10 +2,13 @@ import axios, { AxiosError } from "axios";
 import useSWR, { SWRResponse } from "swr";
 import { SystemUser } from "../types";
 
+export const useUsers = (): SWRResponse<SystemUser[], AxiosError> =>
+  useSWR(`/api/users/get-all`);
+
 export const useUserByEmail = (
-  email: string
+  email: string | undefined
 ): SWRResponse<SystemUser, AxiosError> =>
-  useSWR(`/api/projects?email=${email}`);
+  useSWR(`/api/users?email=${email}`);
 
 export const addUser = async (
   formData: Record<string, string>
