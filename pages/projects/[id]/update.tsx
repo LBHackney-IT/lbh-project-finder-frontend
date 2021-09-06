@@ -10,6 +10,8 @@ import projectSizes from "../../../data/projectSizes";
 import projectPriority from "../../../data/ProjectPriority";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useEffect } from "react";
+import { GetServerSideProps } from "next";
+import { isAuthorised } from "../../../utils/auth";
 
 export type ProjectFormData = {
   projectName: string;
@@ -128,6 +130,35 @@ const UpdateProjectPage = (): React.ReactElement => {
       <Button label="Finish" type="submit" />
     </form>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+}) => {
+  const user = isAuthorised(req);
+
+  if (!user) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+
+  if (user.hasAdminPermissions == false) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/access-denied',
+      },
+    };
+  }
+
+
+  return {
+    props: {},
+  };
 };
 
 export default UpdateProjectPage;

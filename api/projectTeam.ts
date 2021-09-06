@@ -2,12 +2,17 @@ import axios from "axios";
 import { ProjectMember } from "../types";
 
 const ENDPOINT_API = process.env.ENDPOINT_API;
+const API_KEY = process.env.API_KEY;
+
+const keyHeader = {
+  'x-api-key': API_KEY
+}
 
 export const getTeamByProject = async (
   projectId: number
 ): Promise<ProjectMember[] | []> => {
   const { data } = await axios.get(`${ENDPOINT_API}/projects/${projectId}/team`, {
-    // headers,
+    headers: keyHeader,
   })
   console.log(data)
   return data
@@ -18,7 +23,7 @@ export const addTeamMember = async (
   formData: Record<string, string | number>
 ): Promise<any> => {
   const { data } = await axios.post(`${ENDPOINT_API}/members`, formData, {
-    // headers,
+    headers: keyHeader,
   })
 
   return data
@@ -30,7 +35,7 @@ export const removeTeamMember = async (
   await axios.delete(
     `${ENDPOINT_API}/members/${team_member_id}`,
     {
-      //headers,
+      headers: keyHeader,
     }
   );
 };
