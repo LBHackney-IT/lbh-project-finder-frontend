@@ -8,6 +8,7 @@ import style from "./ProjectView.module.scss";
 import Spinner from "../Spinner/Spinner";
 import { useState } from "react";
 import RemovalModal from "./RemovalModal";
+import { useAuth } from "../UserContext/UserContext";
 
 interface Props {
   projectId: number;
@@ -39,6 +40,7 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
   const { data: project, error } = useProject(projectId);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [projectToRemove, setProjectToRemove] = useState<Project>();
+  const { user } = useAuth();
   const { push } = useRouter();
   if (error) {
     return <ErrorMessage />;
@@ -73,14 +75,16 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
             route={`/projects/${projectId}/update`}
             style={{ marginBottom: 20 }}
           />
-          <button
-            className={`lbh-link ${style.discardLink}`}
-            onClick={() => {
-              setIsModalOpen(true), setProjectToRemove(project);
-            }}
-          >
-            Delete Project
-          </button>
+          {user?.hasAdminPermissions &&
+            <button
+              className={`lbh-link ${style.discardLink}`}
+              onClick={() => {
+                setIsModalOpen(true), setProjectToRemove(project);
+              }}
+            >
+              Delete Project
+            </button>
+          }
         </div>
       </div>
       <hr className="lbh-divider" style={{ marginBottom: 50 }} />
