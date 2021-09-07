@@ -32,6 +32,18 @@ jobs:
       - persist_to_workspace:
           root: *workspace_root
           paths: .
+    
+  build:
+    executor: node-executor
+    steps:
+      - *attach_workspace
+      - run:
+          name: Build app
+          command: yarn build
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - project/build
 
   unit-tests:
     executor: node-executor
@@ -44,6 +56,27 @@ jobs:
           name: Run tests
           command: yarn test -w 2
 
+  build-deploy-staging:
+    executor: aws-cli/default
+    steps:
+      - *attach_workspace
+      - run:
+          name: deploy
+          command: yarn --frozen-lockfile --production=true && sudo npm i -g serverless && sls deploy --stage staging
+  
+  assume-role-staging:
+    executor: docker-python
+    steps:
+      - checkout
+      - aws_assume_role/assume_role:
+          account: $AWS_ACCOUNT_STAGING
+          profile_name: default
+          role: 'LBH_Circle_CI_Deployment_Role'
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .aws
+
 workflows:
   version: 2
   continuous-delivery:
@@ -52,3 +85,16 @@ workflows:
       - unit-tests:
           requires:
             - install-dependencies
+      - assume-role-staging:
+          context: api-assume-role-staging-context
+          requires:
+            - unit-tests
+          filters:
+            branches:
+              only: main
+      - build-deploy-staging:
+          requires:
+            - assume-role-staging
+          filters:
+            branches:
+              only: main
