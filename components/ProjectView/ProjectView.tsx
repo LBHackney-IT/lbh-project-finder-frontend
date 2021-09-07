@@ -69,13 +69,14 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
         <div className={`govuk-grid-column-two-thirds`}>
           <h1 className="lbh-heading-h1">{project.projectName}</h1>
         </div>
-        <div className={`govuk-grid-column-one-third ${style.actionsArea}`}>
-          <Button
-            label="Update Project"
-            route={`/projects/${projectId}/update`}
-            style={{ marginBottom: 20 }}
-          />
-          {user?.hasAdminPermissions &&
+        {user?.hasAdminPermissions && (
+          <div className={`govuk-grid-column-one-third ${style.actionsArea}`}>
+            <Button
+              label="Update Project"
+              route={`/projects/${projectId}/update`}
+              style={{ marginBottom: 20 }}
+            />
+
             <button
               className={`lbh-link ${style.discardLink}`}
               onClick={() => {
@@ -84,8 +85,9 @@ const ProjectView = ({ projectId, children }: Props): React.ReactElement => {
             >
               Delete Project
             </button>
-          }
-        </div>
+          </div>
+        )}
+
       </div>
       <hr className="lbh-divider" style={{ marginBottom: 50 }} />
 

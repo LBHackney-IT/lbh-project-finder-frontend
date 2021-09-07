@@ -10,6 +10,9 @@ import projectSizes from "../../data/projectSizes";
 import projectPriority from "../../data/ProjectPriority";
 import ErrorSummary from "../../components/ErrorSummary/ErrorSummary";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { isAuthorised } from "../../utils/auth";
+import { GetServerSideProps } from "next";
 
 export type ProjectFormData = {
   project_name: string;
@@ -24,6 +27,7 @@ export type ProjectFormData = {
 
 const NewProjectPage = (): React.ReactElement => {
   const [error, setError] = useState(false);
+  const { push } = useRouter();
   const methods = useForm<ProjectFormData>();
   const {
     register,
@@ -33,6 +37,7 @@ const NewProjectPage = (): React.ReactElement => {
   const onFormSubmit = async (data: ProjectFormData) => {
     try {
       await addProject({ ...data });
+      push(`/`);
     } catch (e) {
       setError(true);
     }
@@ -120,6 +125,35 @@ const NewProjectPage = (): React.ReactElement => {
       </div>
     </FormProvider>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+}) => {
+  const user = isAuthorised(req);
+
+  if (!user) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+
+  if (user.hasAdminPermissions == false) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/access-denied',
+      },
+    };
+  }
+
+
+  return {
+    props: {},
+  };
 };
 
 export default NewProjectPage;
