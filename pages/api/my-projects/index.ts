@@ -33,7 +33,11 @@ const endpoint: NextApiHandler = async (
                 res.status(StatusCodes.OK).json({ projects: userProjects, auth: user });
             } catch (error) {
                 console.error("User projects get error:", error?.response?.data);
+                console.error("User projects status code:", error?.response?.status);
                 console.error("User projects get request:", req);
+                if (error.response.status == 404) {
+                    return res.status(StatusCodes.NOT_FOUND).json({ message: 'User Not Found' });
+                }
                 res
                     .status(StatusCodes.INTERNAL_SERVER_ERROR)
                     .json({ message: "Unable to get user projects" });
