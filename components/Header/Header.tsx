@@ -26,10 +26,13 @@ const Header = ({
           {user && (
             <nav className="lbh-header__links">
               <Link href="/">
-                <a className="govuk-header__link">All projects</a>
+                <a className="govuk-header__link">Search</a>
               </Link>
               <Link href="/my-projects">
                 <a className="govuk-header__link">My projects</a>
+              </Link>
+              <Link href="/users">
+                <a className="govuk-header__link">User management</a>
               </Link>
               <Link href="/logout">
                 <a className="govuk-header__link">Sign out</a>

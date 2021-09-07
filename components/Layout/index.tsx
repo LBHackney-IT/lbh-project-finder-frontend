@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import Footer from "./Footer";
 
 export interface Props {
   children: React.ReactChild;
@@ -14,6 +15,8 @@ const Layout = ({ children }: Props): React.ReactElement => {
           {children}
         </main>
       </div>
+
+      <Footer />
     </>
   );
 };
