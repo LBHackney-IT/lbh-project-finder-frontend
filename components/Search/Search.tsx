@@ -7,11 +7,13 @@ import SearchByProjectDetails from "./SearchByProjectDetails";
 import style from "./Search.module.scss";
 import Spinner from "../Spinner/Spinner";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useAuth } from "../UserContext/UserContext";
 
 const ProjectSearch = (): React.ReactElement => {
   const [projects, setProjects] = useState<ProjectSearchResults | null>();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<string>();
+  const { user } = useAuth();
   let formParams: SearchFormData;
 
   const onFormSubmit = async (params: SearchFormData) => {
@@ -38,12 +40,15 @@ const ProjectSearch = (): React.ReactElement => {
           <div className="govuk-grid-column-two-thirds">
             <h1 className="lbh-header-l ">Projects search</h1>
           </div>
-          <div
-            className="govuk-grid-column-one-third"
-            style={{ paddingLeft: 170 }}
-          >
-            <Button label="Create Project" route={"/projects/add"} />
-          </div>
+          {user?.hasAdminPermissions &&
+            <div
+              className="govuk-grid-column-one-third"
+              style={{ paddingLeft: 170 }}
+            >
+
+              <Button label="Create Project" route={"/projects/add"} />
+            </div>
+          }
         </div>
         <p className="lbh-body govuk-!-margin-bottom-3">
           Use search to find a project. To view all projects press the search
