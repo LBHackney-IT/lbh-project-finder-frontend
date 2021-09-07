@@ -8,7 +8,7 @@ export const useUsers = (): SWRResponse<SystemUser[], AxiosError> =>
 export const useUserByEmail = (
   email: string | undefined
 ): SWRResponse<SystemUser, AxiosError> =>
-  useSWR(`/api/users?email=${email}`);
+  useSWR(email ? `/api/users?email=${email}` : null);
 
 export const addUser = async (
   formData: Record<string, string>
