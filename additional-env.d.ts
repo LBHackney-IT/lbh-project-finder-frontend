@@ -5,6 +5,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
+      GSSO_URL: string;
       GSSO_TOKEN_NAME: string;
       HACKNEY_JWT_SECRET: string;
       ENDPOINT_API: string;
