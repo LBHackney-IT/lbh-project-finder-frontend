@@ -91,7 +91,7 @@ workflows:
       - assume-role-staging:
           context: api-assume-role-staging-context
           requires:
-            - unit-tests
+            - build
           filters:
             branches:
               only: main
