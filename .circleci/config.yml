@@ -85,6 +85,9 @@ workflows:
       - unit-tests:
           requires:
             - install-dependencies
+      - build:
+          requires:
+            - unit-tests
       - assume-role-staging:
           context: api-assume-role-staging-context
           requires:
