@@ -19,15 +19,12 @@ const endpoint: NextApiHandler = async (
     switch (req.method) {
         case "GET":
             try {
-                console.log("user is: " + user.email)
                 const userData = await getUserByEmail(user.email);
-                console.log("hmm?: " + userData)
                 if (!userData) {
                     return res
                         .status(StatusCodes.NOT_FOUND)
                         .json({ message: 'User Not Found' });
                 }
-                console.log("success?")
                 const userProjects = await getProjectsByUser(userData.id);
                 console.log(userProjects)
                 res.status(StatusCodes.OK).json({ projects: userProjects, auth: user });
