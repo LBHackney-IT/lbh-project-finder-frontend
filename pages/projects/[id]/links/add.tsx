@@ -6,7 +6,7 @@ import TextInput from "../../../../components/TextInput/TextInput";
 import { addProjectLink } from "../../../../utils/projectLinks";
 
 interface FormData {
-  type: string;
+  link_title: string;
   link: string;
 }
 
@@ -37,8 +37,8 @@ const AddNewLinkPage = (): React.ReactElement => {
           New Link
         </h1>
         <TextInput
-          name="type"
-          label="Link type"
+          name="link_title"
+          label="Link title"
           required={true}
           register={register}
           rules={{ required: "A name for the link is required" }}

@@ -9,7 +9,7 @@ export const useProjectLinks = (
 
 interface addNewProjectLinkData {
   project_id: number;
-  type: string;
+  link_title: string;
   link: string;
 }
 
